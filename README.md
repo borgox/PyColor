@@ -21,7 +21,7 @@ pip install PyColorator
 
 ### Basic Usage
 ```python
-from PyColorator.pycolor import Colorate, ColorGradients, Direction
+from PyColor.pycolor import Colorate, ColorGradients, Direction
 
 # Initialize the Colorate system
 colorate = Colorate()
@@ -34,7 +34,7 @@ print(gradient_text)
 
 ## Using two gradients
 ```python
-from PyColorator.pycolor import Colorate, ColorGradients, Direction
+from PyColor.pycolor import Colorate, ColorGradients, Direction
 
 colorate = Colorate()
 

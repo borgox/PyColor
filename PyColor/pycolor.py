@@ -1,4 +1,5 @@
 import os
+import shutil
 import sys
 import platform
 from enum import Enum
@@ -292,6 +293,14 @@ class ColorateSystem:
             cls._instance = super(ColorateSystem, cls).__new__(cls)
         return cls._instance
 
+    def get_terminal_size(self):
+        try:
+            cols, rows = shutil.get_terminal_size((80, 20))
+        except AttributeError:
+            # Impostazione di default
+            cols, rows = 80, 20
+        return cols, rows
+
     @classmethod
     def init(cls, force_color: bool = False, wave_amplitude: float = 1.0,
              wave_frequency: float = 0.1, restore_on_exit: bool = True):
@@ -343,6 +352,7 @@ class Colorate:
         self.width = 0
         self.height = 0
         self.system = ColorateSystem()
+        self.system.init()
 
         # Ensure the system is initialized with defaults if not done already
         if not ColorateSystem.initialized:
